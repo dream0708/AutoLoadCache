@@ -36,16 +36,13 @@ var ioc = {
 		type : "com.jarvis.cache.serializer.HessianSerializer"
 	},
 	cachePointCut : {
-		type : "com.jarvis.cache.redis.ShardedCachePointCut",
+		type : "com.jarvis.cache.map.CachePointCut",
 		args : [ {
 			refer : "autoLoadConfig"
 		} ],
 		fields : {
 			serializer : {
 				refer : "hessianSerializer"
-			},
-			shardedJedisPool : {
-				refer : "shardedJedisPool"
 			},
 			namespace : 'test_hessian'
 		},
