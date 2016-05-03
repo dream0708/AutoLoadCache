@@ -10,8 +10,6 @@ public class SimpleAopConfigureTest {
 
 	public static void main(String[] args) throws ClassNotFoundException {
 		Ioc ioc = new NutIoc(new ComboIocLoader("*json", "/ioc", "*anno", "com.test", "*com.jarvis.cache.aop.nutz.AutoLoadCacheIocLoader"));
-		Dao dao = ioc.get(Dao.class);
-		dao.create(AutoLoadCache.class, false);
 		AutoLoadCacheService autoLoadCacheService = ioc.get(AutoLoadCacheService.class);
 		AutoLoadCache data = new AutoLoadCache();
 		data.setId(1);
