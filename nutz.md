@@ -12,7 +12,7 @@
 
 	@IocBy(type=ComboIocProvider.class, args={"*js", "ioc/",
 										   "*anno", "net.wendal.nutzbook",
-										   "*org.nutz.integration.autoloadcache.AutoLoadCacheIocLoader"})
+										   "*com.jarvis.cache.aop.nutz.AutoLoadCacheIocLoader"})
 										   
 
 redis-pool.js文件配置的爲Redis的緩存
@@ -134,7 +134,7 @@ https://github.com/qiujiayu/AutoLoadCache
 		<servlet-class>com.jarvis.cache.admin.servlet.AdminServlet</servlet-class>
 		<init-param>
 			<param-name>cacheManagerConfig</param-name>
-			<param-value>org.nutz.integration.autoloadcache.NutzCacheManagerConfig</param-value>
+			<param-value>com.jarvis.cache.aop.nutz.NutzCacheManagerConfig</param-value>
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
