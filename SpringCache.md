@@ -1,4 +1,6 @@
 # AutoLoadCache 与 Spring Cache 的区分
+# AutoLoadCache 与 Spring Cache 的区分
+# AutoLoadCache 与 Spring Cache 的区分
 ---------------------------------------------
 AutoLoadCache 与 Spring Cache 相似之处，都是使用 AOP + Annotation ，将缓存与业务逻辑进行解耦。而最重要的分别就是：AutoLoadCache 实现了自动加载和“拿来主义”机制，能更好地解决系统的性能及并发问题。 
 
