@@ -1,3 +1,4 @@
+# GOOD 
 # AutoLoadCache
 ---------------------------------------------
 [![Build Status](http://img.shields.io/travis/qiujiayu/AutoLoadCache.svg?style=flat&branch=master)](https://travis-ci.org/qiujiayu/AutoLoadCache)
