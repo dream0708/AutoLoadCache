@@ -16,12 +16,12 @@
 			<comments>A business-friendly OSS license</comments>
 		</license>
 	</licenses>
-	<developers>
+	<!-- <developers>
 		<developer>
 			<name>qiujiayu</name>
 			<email>qiujiayu@gmail.com</email>
 		</developer>
-	</developers>
+	</developers> -->
 	<scm>
 		<connection>scm:git:git@github.com:qiujiayu/AutoLoadCache.git</connection>
 		<developerConnection>scm:git:git@github.com:qiujiayu/AutoLoadCache.git</developerConnection>
