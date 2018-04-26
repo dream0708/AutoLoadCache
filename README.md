@@ -1,6 +1,4 @@
-
-# AutoLoadCacheOR 20180102
-# AutoLoadCacheAND 20171229
+﻿
 ---------------------------------------------
 [![Build Status](http://img.shields.io/travis/qiujiayu/AutoLoadCache.svg?style=flat&branch=master)](https://travis-ci.org/qiujiayu/AutoLoadCache)
 [![Maven Central](https://img.shields.io/maven-central/v/com.github.qiujiayu/autoload-cache.svg?style=flat-square)](https://maven-badges.herokuapp.com/maven-central/com.github.qiujiayu/autoload-cache/)
@@ -28,21 +26,6 @@ AOP拦截到请求后：
 **分布式自动加载**
 
 如果将应用部署在多台服务器上，理论上可以认为自动加载队列是由这几台服务器共同完成自动加载任务。比如应用部署在A,B两台服务器上，A服务器自动加载了数据D，（因为两台服务器的自动加载队列是独立的，所以加载的顺序也是一样的），接着有用户从B服务器请求数据D，这时会把数据D的最后加载时间更新给B服务器，这样B服务器就不会重复加载数据D。
-
-
-##使用方法 
-
-###1. Maven
-
-
-    <dependency>
-      <groupId>com.github.qiujiayu</groupId>
-      <artifactId>autoload-cache</artifactId>
-      <version>${version}</version>
-    </dependency>
-
-
-###2. Spring AOP配置
 
 
 已经实现了Redis、Memcache以及ConcurrentHashMap 缓存的PointCut，直接在Spring 中用<aop:config>就可以使用。
