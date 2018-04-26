@@ -35,7 +35,7 @@ public abstract class AbstractCacheManager implements ICacheManager {
     private String namespace;
 
     /**
-     * 序列化工具，默认使用Hessian2
+	
      */
     private ISerializer<Object> serializer=new HessianSerializer();
 
