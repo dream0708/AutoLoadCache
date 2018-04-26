@@ -3,7 +3,7 @@ package com.jarvis.cache.aop.nutz;
 import org.nutz.ioc.loader.annotation.AnnotationIocLoader;
 
 /**
- * @author Rekoe(koukou890@gmail.com)
+ * @author Rekoe(dfe@gmail.com)
  *
  */
 public class AutoLoadCacheIocLoader extends AnnotationIocLoader {
