@@ -1,49 +1,14 @@
-﻿解决因为本地代码和远程代码冲突，导致git pull无法拉取远程代码的问题
+﻿解决因为本
+$ git add readme.txt 
+$ git commit -m "conflict fixed"
+[master 59bc1cb] conflict fixed
+地代码和远程代码冲突，导致git pull无法拉取远程代码的问题
  
-
-一、问题
-
-　　当本地代码和远程代码有冲突的时候，执行git pull操作的时候，会提示有冲突，然后直接终止本次pull，查了些资料没有找到强制pull的方式，但是可以使用如下方式解决。
-
- 
-
-二、解决思路
-
-　　可以先将本地内容stash到仓库中，执行stash操作后，本地代码将返回到修改前的内容。这时，就可以正常将远程代码下载到本地了。然后再通过stash操作将仓库中的内容合到本地，如果有冲突就可以进行解决了。
-
-　　git stash命令主要用于以下情形：
-
-发现有一个类是多余的，想删掉它又担心以后需要查看它的代码，想保存它但又不想增加一个脏的提交。这时就可以考虑git stash。
-使用git的时候，我们往往使用分支（branch）解决任务切换问题，例如，我们往往会建一个自己的分支去修改和调试代码, 如果别人或者自己发现原有的分支上有个不得不修改的bug，我们往往会把完成一半的代码commit提交到本地仓库，然后切换分支去修改bug，改好之后再切换回来。这样的话往往log上会有大量不必要的记录。其实如果我们不想提交完成一半或者不完善的代码，但是却不得不去修改一个紧急Bug，那么使用git stash就可以将你当前未提交到本地（和服务器）的代码推入到Git的栈中，这时候你的工作区间和上一次提交的内容是完全一样的，所以你可以放心的修Bug，等到修完Bug，提交到服务器上后，再使用git stash apply将以前一半的工作应用回来。
-经常有这样的事情发生，当你正在进行项目中某一部分的工作，里面的东西处于一个比较杂乱的状态，而你想转到其他分支上进行一些工作。问题是，你不想提交进行了一半的工作，否则以后你无法回到这个工作点。解决这个问题的办法就是git stash命令。储藏(stash)可以获取你工作目录的中间状态——也就是你修改过的被追踪的文件和暂存的变更——并将它保存到一个未完结变更的堆栈中，随时可以重新应用。
- 
-
-三、操作命令
-
-　　1、git stash 将本地代码stash到仓库中。
-
-　　　　可以使用git stash save ***定义自己的标记，方便以后查询
-
-　　2、git pull 将远程代码拉取到本地。
-
-　　3、git stash pop 将仓库中的代码合到本地最新代码中。
-
-　　4、在处理bug的过程中，可能存在多次stash的操作。这时可以使用git stash list查看本地仓库中都存储了几个stash版本。
-
-　　5、git stash pop默认将最近一次stash操作合并到本地代码中，也可以通过git stash pop stash@{Number}指定将某次stash的内容合并到本地代码中。
-
-　　6、git stash pop命令在合并代码的同时，会把仓库中对应的内容弹出。如果只想查看，而不想弹出内容，可以使用git stash apply命令进行操作。
-
-　　7、git stash -h 查看git stash帮助
-
-　　8、git stash show 显示stash合并到本地代码后，哪些文件会修改，以及修改的概述
-
-　　9、git stash show -p stash@{0} 显示修改的详细内容
-
- 
-
- 
-
-四、从stash创建分支
-
-　　如果你储藏了一些工作，暂时不去理会，然后继续在你储藏工作的分支上工作，你
+# Your branch is ahead of 'origin/master' by 2 commits.
+#
+# Unmerged paths:
+#   (use "git add/rm <file>..." as appropriate to mark resolution)
+#
+一$ git add readme.txt 
+$ git commit -m "conflict fixed"
+[master 59bc1cb] conflict fixed工作，暂时不去理会，然后继续在你储藏工作的分支上工作，你
