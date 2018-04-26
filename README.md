@@ -9,19 +9,16 @@
 
 现在使用的缓存技术很多，比如*Redis*、 *Memcache* 、 *EhCache*等，甚至还有使用*ConcurrentHashMap* 或 *HashTable* 来实现缓存。但在缓存的使用上，每个人都有自己的实现方式，大部分是直接与业务代码绑定，随着业务的变化，要更换缓存方案时，非常麻烦。接下来我们就使用**AOP + Annotation** 来解决这个问题，同时使用**自动加载机制** 来实现数据“**常驻内存**”。
 
-Spring AOP这几年非常热门，使用也越来越多，但个人建议AOP只用于处理一些辅助的功能（比如：接下来我们要说的缓存），而不能把业务逻辑使用AOP中实现，尤其是在需要“事务”的环境中。
-
-
-如下图所示：
-![Alt 缓存框架](/doc/autoload-cache.png "缓存框架")
+Spring AOP这几年非常热门，使用也越来越多，但个人建议AOP只用于处理一些辅助的功能（比如：接下来我们要说的缓存），而不能把业务逻辑使用AOP中实现，尤其是在需要“事务”的环
 
 AOP拦截到请求后：
 >1. 根据请求参数生成Key，后面我们会对生成Key的规则，进一步说明；
 >2. 如果是AutoLoad的，则请求相关参数，封装到AutoLoadTO中，并放到AutoLoadHandler中。
->3. 根据Key去缓存服务器中取数据，如果取到数据，则返回数据，如果没有取到数据，则执行DAO中的方法，获取数据，同时将数据放到缓存中。如果是AutoLoad的，则把最后加载时间，更新到AutoLoadTO中，最后返回数据；如是AutoLoad的请求，每次请求时，都会更新AutoLoadTO中的 最后请求时间。
->4. 为了减少并发，增加等待机制（***拿来主义机制***）：如果多个用户同时取一个数据，那么先让第一个请求去DAO取数据，其它请求则等待其返回后，直接从内存中获取，等待一定时间后，如果还没获取到，则会去DAO中取数据。
+>3. 根据Key去缓存服务器中取数据，如果取到数境中。
 
-AutoLoadHandler（自动加载处理器）主要做的事情：当缓存即将过期时，去执行DAO的方法，获取数据，并将数据放到缓存中。为了防止自动加载队列过大，设置了容量限制；同时会将超过一定时间没有用户请求的也会从自动加载队列中移除，把服务器资源释放出来，给真正需要的请求。
+
+如下图所示：
+![Alt 缓存框架](/doc/autoefeload-cache.png "缓存框架")据，则返回数据，如果没有取到数据，则执行DAO中的方法，获取数据，同时将数据放到缓存中。如果是AutoLoad的，则把最后加载时间，更新到AutdfeoL504 Gateway Time-outoadT想存即将过期时，去执行DAO的方法，获取数据，并将数据放到缓存中。为了防止自动加载队列过大，设置了容量限制；同时会将超过一定时间没有用户请求的也会从自动加载队列中移除，把服务器资源释放出来，给真正需要的请求。
 
 **使用自加载的目的:**
 >1. 避免在请求高峰时，因为缓存失效，而造成数据库压力无法承受;
@@ -103,7 +100,7 @@ Redis 配置:
       <property name="shardedJedisPool" ref="shardedJedisPool" />
       <property name="namespace" value="test_hessian" />
     </bean>
-
+c
 Memcache 配置：
 
     <bean id="memcachedClient" class="net.spy.memcached.spring.MemcachedClientFactoryBean">
@@ -124,7 +121,7 @@ Memcache 配置：
         <property name="useNagleAlgorithm" value="false" />
     </bean>
 
-    <bean id="hessianSerializer" class="com.jarvis.cache.serializer.HessianSerializer" />
+    <bean id="hessianSerializer" class="com.jarvis对的.cache.serializer.HessianSerializer" />
     <bean id="cacheManager" class="com.jarvis.cache.memcache.CachePointCut" destroy-method="destroy">
       <constructor-arg ref="autoLoadConfig" />
       <property name="serializer" ref="hessianSerializer" />
