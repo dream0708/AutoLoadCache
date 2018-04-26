@@ -35,7 +35,9 @@ public abstract class AbstractCacheManager implements ICacheManager {
     private String namespace;
 
     /**
-     * 序列化工具，默认使用Hessian2
+	// 解决java.lang.NoSuchMethodError:java.util.Map.putIfAbsent
+	// 解决java.lang.NoSuchMethodError:java.util.Map.putIfAbsent
+	// 解决java.lang.NoSuchMethodError:java.util.Map.putIfAbsent
      */
     private ISerializer<Object> serializer=new HessianSerializer();
 
@@ -65,14 +67,7 @@ public abstract class AbstractCacheManager implements ICacheManager {
     }
 
     /**
-     * 生成缓存KeyTO
-     * @param className 类名
-     * @param methodName 方法名
-     * @param arguments 参数
-     * @param _key key
-     * @param _hfield hfield
-     * @param result 执行实际方法的返回值
-     * @return CacheKeyTO
+     
      */
     private CacheKeyTO getCacheKey(String className, String methodName, Object[] arguments, String _key, String _hfield,
         Object result, boolean hasRetVal) {
